@@ -1,4 +1,10 @@
 from pathlib import Path
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("folder")
+args = parser.parse_args()
+folder = Path(args.folder)
 
 # funkcja tworząca klucze slownika
 def get_category(path):
@@ -17,7 +23,7 @@ def get_free_name(location, path):
     return new
 
 # tworzymy obiekt Path folderu ktory chcemy uporzadkowac
-folder = Path(r'C:\Users\krlma\test_folder')
+# folder = Path(r'C:\Users\krlma\test_folder')
 
 
 dirs = {}   # str(ext) -> [file.ext]
