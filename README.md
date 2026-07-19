@@ -6,4 +6,5 @@ Link: https://python.plainenglish.io/10-python-projects-that-made-me-a-better-de
 List of content:
 
 [File Organizer](1-file-organizer)
+
 [Weather CLI](2-weather-cli)
