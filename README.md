@@ -8,3 +8,5 @@ List of content:
 [File Organizer](1-file-organizer)
 
 [Weather CLI](2-weather-cli)
+
+[Invoice Generator](3-invoice-generator)
