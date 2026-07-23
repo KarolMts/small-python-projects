@@ -1,15 +1,18 @@
-from accountant import calculate, Charge
+from accountant import calculate, Charge, summarize
 from decimal import Decimal
 
-def test_a_simple_case_for_start():
+def test_two_units_standard_vat():
     
     vat_rate = "0.23"
     unit_price = "10"
     quantity = 2
     
     result = calculate(vat_rate, unit_price, quantity)
+    expected = Charge.from_amounts("20", "4.60", "24.60")
     
-    assert result == Charge(Decimal("20"), Decimal("4.60"), Decimal("24.60"))
+    assert result == expected
+    
+    
     
 def test_zero_vat_rate():
     
@@ -18,8 +21,9 @@ def test_zero_vat_rate():
     quantity = 2
     
     result = calculate(vat_rate, unit_price, quantity)
+    expected = Charge.from_amounts("20", "0.00", "20")
     
-    assert result == Charge(Decimal("20"), Decimal("0.00"), Decimal("20"))
+    assert result == expected
     
     
 def test_zero_quantity():
@@ -29,8 +33,9 @@ def test_zero_quantity():
     quantity = 0
     
     result = calculate(vat_rate, unit_price, quantity)
+    expected = Charge.from_amounts("0.00", "0.00", "0.00")
     
-    assert result == Charge(Decimal("0.00"), Decimal("0.00"), Decimal("0.00"))
+    assert result == expected
     
     
 def test_rounding_half_up():
@@ -40,5 +45,28 @@ def test_rounding_half_up():
     quantity = 2
     
     result = calculate(vat_rate, unit_price, quantity)
+    expected = Charge.from_amounts("133.70", "6.69", "140.39")
     
-    assert result == Charge(Decimal("133.70"), Decimal("6.69"), Decimal("140.39"))    
+    assert result == expected  
+    
+    
+    
+def test_summarize_two_charges():
+    
+    charges = [Charge.from_amounts('100', '23', '123'), Charge.from_amounts('200', '46', '246')]
+    
+    result = summarize(charges)
+    expected = Charge.from_amounts('300', '69', '369')
+    
+    assert  result == expected
+    
+    
+    
+def test_summarize_empty_list():
+    
+    charges = []
+    
+    result = summarize(charges)
+    expected = Charge.from_amounts('0', '0', '0')
+    
+    assert result == expected
