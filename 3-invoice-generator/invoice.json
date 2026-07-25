@@ -1,0 +1,35 @@
+{
+    "invoice_number":"P/43917324/0001/26",
+    "issue_date":"2026-02-02",
+    "due_date":"2026-02-16",
+    "currency":"PLN",
+    "vendor":{
+        "name":"hard_ware_company",
+        "address":"ul.Jana Kazimierza 3, 01-248 Warszawa",
+        "tax_id":"5272706082"
+    },
+    "customer":{
+        "name":"some client",
+        "address":"some address"
+    },
+    "line_items":[
+        {
+            "description":"laptop hd omen",
+            "quantity":4,
+            "unit_price":"5400.00",
+            "tax_rate":"0.23"
+        },
+        {
+            "description":"computer mouse logitech",
+            "quantity":2,
+            "unit_price":"399.00",
+            "tax_rate":"0.08"
+        }
+    ],
+    "payment":{
+        "bank":"Bank Pekao S.A.",
+        "account_number":"02 1240 6960 0162 2190 8829 0006",
+        "form":"transfer",
+        "title":"shopping"
+    }
+}
