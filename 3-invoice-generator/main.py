@@ -3,6 +3,7 @@ import argparse
 import json
 from loader import load_invoice
 from accountant import calculate, summarize
+from pdf_maker import create_pdf
 
 def main():
 
@@ -25,11 +26,7 @@ def main():
         sys.exit(f'Key {e} not found')
 
     else:
-        print(f"{'netto':<8}{total.net:>12,.2f} {data['currency']}")
-        print(f"{'vat':<8}{total.vat:>12,.2f} {data['currency']}")
-        print(f"{'brutto':<8}{total.gross:>12,.2f} {data['currency']}")
-        print(charges)
-
+        create_pdf(data, charges, total)
 
 if __name__ == '__main__':
     main()
